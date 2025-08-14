@@ -114,35 +114,56 @@ export default function DashboardPage() {
   const [inicioSistema] = useState(new Date())
   const [isUpdating, setIsUpdating] = useState(false)
   const [showUpload, setShowUpload] = useState(false)
+  const [dadosExcel, setDadosExcel] = useState<DashboardData | null>(null)
 
   const metaDiariaAtingida = dados.estatisticas.totalAtendimentos >= 300
   const filaAcimaNormal = dados.estatisticas.filaEspera > 10
+
+  const simularDadosDinamicos = () => {
+    const baseDados = dadosExcel || dadosPadrao
+    const variacao = Math.random() * 0.1 - 0.05 // -5% a +5%
+
+    return {
+      ...baseDados,
+      estatisticas: {
+        ...baseDados.estatisticas,
+        totalAtendimentos: Math.max(1, Math.floor(baseDados.estatisticas.totalAtendimentos * (1 + variacao))),
+        filaEspera: Math.max(0, Math.floor(baseDados.estatisticas.filaEspera + (Math.random() * 10 - 5))),
+      },
+      atendentes: baseDados.atendentes.map((atendente) => ({
+        ...atendente,
+        atendimentos: Math.max(0, Math.floor(atendente.atendimentos * (1 + variacao * 0.5))),
+      })),
+    }
+  }
 
   const carregarDados = async () => {
     try {
       setIsUpdating(true)
       setStatus("carregando")
 
-      const response = await fetch("/api/excel-data")
-      const result = await response.json()
+      // Simular delay de carregamento
+      await new Promise((resolve) => setTimeout(resolve, 800))
 
-      if (result.success) {
-        await new Promise((resolve) => setTimeout(resolve, 800))
-
-        setDados(result.data)
-        setStatus("sucesso")
-        setUltimaAtualizacao(new Date(result.lastUpdate).toLocaleString("pt-BR"))
-        setContadorAtualizacoes((prev) => prev + 1)
-      } else {
-        console.error("Erro ao carregar dados:", result.error)
-        setStatus("erro")
-      }
+      const dadosAtualizados = simularDadosDinamicos()
+      setDados(dadosAtualizados)
+      setStatus(dadosExcel ? "sucesso" : "usando-padrao")
+      setUltimaAtualizacao(new Date().toLocaleString("pt-BR"))
+      setContadorAtualizacoes((prev) => prev + 1)
     } catch (error) {
-      console.error("Erro na requisição:", error)
+      console.error("Erro ao atualizar dados:", error)
       setStatus("erro")
     } finally {
       setTimeout(() => setIsUpdating(false), 1500)
     }
+  }
+
+  const handleExcelData = (novosDados: DashboardData) => {
+    setDadosExcel(novosDados)
+    setDados(novosDados)
+    setStatus("sucesso")
+    setUltimaAtualizacao(new Date().toLocaleString("pt-BR"))
+    setContadorAtualizacoes((prev) => prev + 1)
   }
 
   const calcularTempoFuncionamento = () => {
@@ -157,7 +178,7 @@ export default function DashboardPage() {
     carregarDados()
     const interval = setInterval(carregarDados, 60000) // Atualiza a cada minuto
     return () => clearInterval(interval)
-  }, [])
+  }, [dadosExcel])
 
   return (
     <div className="relative">
@@ -206,9 +227,9 @@ export default function DashboardPage() {
               {status === "carregando"
                 ? "Atualizando..."
                 : status === "sucesso"
-                  ? "Sistema Online"
+                  ? "Dados do Excel"
                   : status === "erro"
-                    ? "Erro na conexão"
+                    ? "Erro na atualização"
                     : "Modo demonstração"}
             </span>
           </div>
@@ -257,12 +278,7 @@ export default function DashboardPage() {
       {showUpload && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="w-full max-w-md">
-            <ExcelUpload
-              onUploadSuccess={() => {
-                setShowUpload(false)
-                carregarDados()
-              }}
-            />
+            <ExcelUpload onUploadSuccess={handleExcelData} />
             <Button
               onClick={() => setShowUpload(false)}
               variant="outline"
