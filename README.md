@@ -1,128 +1,187 @@
-# Dashboard Excel - Central de Manifesto
+# 📊 Dashboard Excel - Sistema de Monitoramento em Tempo Real
 
-Dashboard completo com integração Excel para monitoramento de atendimentos em tempo real.
+**Dashboard profissional com integração Excel para monitoramento de atendimentos e performance da equipe.**
 
-## 🚀 Características
+🔗 **[ACESSE O DASHBOARD AO VIVO](https://seu-usuario.github.io/dashboard-excel-github)**
 
-- **Integração Excel**: Carregue dados diretamente de planilhas Excel (.xlsx, .xls)
-- **Tempo Real**: Atualização automática dos dados a cada minuto
-- **Responsivo**: Interface adaptável para diferentes tamanhos de tela
-- **GitHub Ready**: Pronto para deploy no GitHub Pages ou Vercel
+![Dashboard Preview](https://via.placeholder.com/800x400/1e293b/64748b?text=Dashboard+Excel+Preview)
 
-## 📊 Funcionalidades
+## ⚡ Funcionalidades Principais
 
-### Dashboard Principal
-- Métricas de atendimento em tempo real
-- Gráficos interativos por hora
-- Ranking de performance dos atendentes
-- Status da equipe online
-- Alertas do sistema
-- Análise de clientes
+### 🎯 **Dashboard em Tempo Real**
+- **Métricas Instantâneas**: Total de atendimentos, fila de espera, taxa de resolução
+- **Performance da Equipe**: Ranking de atendentes com eficiência e satisfação
+- **Gráficos Interativos**: Visualização por hora dos atendimentos
+- **Status Online**: Monitoramento em tempo real da equipe
+- **Sistema de Alertas**: Notificações automáticas de status
 
-### Integração Excel
-- Upload de planilhas Excel
-- Processamento automático dos dados
-- Estrutura flexível de abas
-- Fallback para dados de demonstração
+### 📈 **Análise de Dados**
+- **Clientes Top**: Ranking dos principais clientes por volume
+- **Estatísticas Avançadas**: Tempo médio, taxa de resolução, pendências
+- **Histórico por Hora**: Gráfico de barras com picos de atendimento
+- **Indicadores Visuais**: Status coloridos para fácil identificação
 
-## 🛠️ Instalação
+### 📊 **Integração Excel**
+- **Upload Direto**: Arraste e solte sua planilha Excel
+- **Processamento Automático**: Leitura de 5 abas diferentes
+- **Dados Dinâmicos**: Atualização automática a cada minuto
+- **Modo Demonstração**: Funciona sem planilha com dados simulados
 
-1. Clone o repositório:
+## 🚀 Como Usar
+
+### 1. **Acesso Imediato**
+\`\`\`
+https://seu-usuario.github.io/dashboard-excel-github
+\`\`\`
+O dashboard já funciona com dados de demonstração!
+
+### 2. **Upload de Planilha Excel**
+1. Clique no botão "Excel" no canto superior direito
+2. Arraste sua planilha Excel ou clique para selecionar
+3. Os dados serão processados automaticamente
+4. Dashboard atualizado em tempo real
+
+### 3. **Estrutura da Planilha**
+Sua planilha deve ter estas 5 abas:
+
+**📋 Aba "Atendentes"**
+\`\`\`
+Nome | Atendimentos | TempoMedio | Status | Satisfacao | Eficiencia
+João Silva | 45 | 8m 30s | online | 5 | 92
+\`\`\`
+
+**📊 Aba "Estatisticas"**
+\`\`\`
+TotalAtendimentos | ChamadosFinalizados | FilaEspera | TaxaResolucao
+322 | 298 | 6 | 92.5
+\`\`\`
+
+**⏰ Aba "GraficoHora"**
+\`\`\`
+Hora | Atendimentos
+08:00 | 15
+09:00 | 28
+\`\`\`
+
+**👥 Aba "Clientes"**
+\`\`\`
+Cliente | Atendimentos | Porcentagem
+Spal Transportes | 95 | 75
+\`\`\`
+
+**🚨 Aba "Alertas"**
+\`\`\`
+Tipo | Mensagem
+success | Sistema funcionando normalmente
+warning | Fila de espera acima da média
+\`\`\`
+
+## 🛠️ Instalação Local
+
 \`\`\`bash
+# Clone o repositório
 git clone https://github.com/seu-usuario/dashboard-excel-github.git
 cd dashboard-excel-github
-\`\`\`
 
-2. Instale as dependências:
-\`\`\`bash
+# Instale as dependências
 npm install
-\`\`\`
 
-3. Execute o projeto:
-\`\`\`bash
+# Execute o projeto
 npm run dev
+
+# Acesse: http://localhost:3000
 \`\`\`
 
-4. Acesse: `http://localhost:3000`
+## 🎨 Interface do Dashboard
 
-## 📋 Estrutura da Planilha Excel
+### **Barra de Status Superior**
+- ✅ Meta diária atingida/pendente
+- 📊 Status da fila (normal/acima do normal)
+- 🟢 Sistema online/offline
+- 📈 Contador de atualizações
+- ⏱️ Tempo online do sistema
 
-Para que o dashboard funcione corretamente, sua planilha Excel deve conter as seguintes abas:
+### **Métricas Principais**
+- **Total de Atendimentos**: Contador em tempo real
+- **Chamados Finalizados**: Com taxa de resolução
+- **Fila de Espera**: Número atual + tempo médio
+- **Chamados em Atendimento**: Status ativo
 
-### Aba "Atendentes"
-| Nome | Atendimentos | TempoMedio | Status | Satisfacao | Eficiencia |
-|------|-------------|------------|---------|------------|------------|
-| João Silva | 45 | 8m 30s | online | 5 | 92 |
+### **Ranking de Atendentes**
+- Nome completo do atendente
+- Número de atendimentos realizados
+- Tempo médio por atendimento
+- Nota de satisfação (1-5 estrelas)
+- Status atual (online/ocupado/pausa)
+- Porcentagem de eficiência
 
-### Aba "Estatisticas"
-| TotalAtendimentos | ChamadosFinalizados | ChamadosEmAtendimento | TaxaResolucao | FilaEspera | TempoMedioEspera |
-|-------------------|--------------------|-----------------------|---------------|------------|------------------|
-| 322 | 298 | 18 | 92.5 | 6 | 2m 15s |
+### **Gráfico por Hora**
+- Visualização em barras dos atendimentos
+- Horário de 08:00 às 21:00
+- Identificação de picos de demanda
+- Cores dinâmicas baseadas no volume
 
-### Aba "GraficoHora"
-| Hora | Atendimentos |
-|------|-------------|
-| 08:00 | 15 |
-| 09:00 | 28 |
+### **Top Clientes**
+- Ranking dos principais clientes
+- Número de atendimentos
+- Porcentagem do total
+- Barra de progresso visual
 
-### Aba "Clientes"
-| Cliente | Atendimentos | Porcentagem |
-|---------|-------------|-------------|
-| Spal Transportes | 95 | 75 |
+## 🚀 Deploy Automático
 
-### Aba "Alertas"
-| Tipo | Mensagem |
-|------|----------|
-| success | Sistema funcionando normalmente |
-| warning | Fila de espera acima da média |
-
-## 🚀 Deploy
-
-### GitHub Pages
-1. Faça push do código para seu repositório GitHub
+### **GitHub Pages** (Recomendado)
+1. Fork este repositório
 2. Vá em Settings > Pages
-3. Selecione a branch main
-4. Seu dashboard estará disponível em: `https://seu-usuario.github.io/dashboard-excel-github`
+3. Selecione branch `main`
+4. Seu dashboard estará em: `https://seu-usuario.github.io/dashboard-excel-github`
 
-### Vercel
-1. Conecte seu repositório GitHub ao Vercel
-2. Deploy automático a cada push
+### **Vercel** (Alternativo)
+1. Conecte seu GitHub ao Vercel
+2. Deploy automático a cada commit
 3. URL personalizada disponível
 
-## 🎨 Personalização
+## 📱 Totalmente Responsivo
 
-- **Cores**: Modifique as classes Tailwind nos componentes
-- **Métricas**: Adicione novas métricas no arquivo `types/dashboard.ts`
-- **Gráficos**: Customize os gráficos no componente Dashboard
-- **Alertas**: Configure novos tipos de alerta
-
-## 📱 Responsividade
-
-O dashboard é totalmente responsivo e funciona em:
-- Desktop (1920px+)
-- Tablet (768px - 1024px)
-- Mobile (320px - 768px)
+- **Desktop**: Layout completo com todas as métricas
+- **Tablet**: Adaptação inteligente dos gráficos
+- **Mobile**: Interface otimizada para toque
 
 ## 🔧 Tecnologias
 
-- **Next.js 14**: Framework React
-- **TypeScript**: Tipagem estática
-- **Tailwind CSS**: Estilização
-- **Lucide React**: Ícones
+- **Next.js 14**: Framework React moderno
+- **TypeScript**: Tipagem estática completa
+- **Tailwind CSS**: Estilização responsiva
+- **Recharts**: Gráficos interativos
 - **XLSX**: Processamento de planilhas Excel
+- **Lucide React**: Ícones profissionais
 
-## 📄 Licença
+## 📊 Recursos Avançados
 
-MIT License - veja o arquivo LICENSE para detalhes.
+- **Atualização Automática**: A cada 60 segundos
+- **Animações Suaves**: Transições profissionais
+- **Modo Escuro**: Interface moderna
+- **Indicadores Visuais**: Status coloridos
+- **Feedback em Tempo Real**: Loading states
+- **Dados Persistentes**: Mantém dados entre sessões
 
 ## 🤝 Contribuição
 
 1. Fork o projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
+2. Crie sua feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
+
+## 📄 Licença
+
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 ## 📞 Suporte
 
-Para dúvidas ou suporte, abra uma issue no GitHub.
+- 🐛 **Issues**: [GitHub Issues](https://github.com/seu-usuario/dashboard-excel-github/issues)
+- 📧 **Email**: seu-email@exemplo.com
+- 💬 **Discussões**: [GitHub Discussions](https://github.com/seu-usuario/dashboard-excel-github/discussions)
+
+---
+
+**⭐ Se este projeto foi útil, deixe uma estrela no GitHub!**
